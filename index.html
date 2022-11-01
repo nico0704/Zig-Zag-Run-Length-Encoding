@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>RUN-LENGTH ENCODING</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <script src="caesar_cipher.js"></script>
+    <script src="run_length_encoding.js"></script>
 </head>
 
 <body>
@@ -14,16 +14,8 @@
             <h1>RUN-LENGTH ENCODING</h1>
         </div>
     </header>
-    <div class="body_wrapper">
-        <input type="file" id="file"></input>
-        <div class="wrapper">
-            <div class="decode">
-                <button id="decode_without_key" onclick="runLengthEncode();">ENCODE</button>
-            </div>
-            <div class="msg" id="msg"></div>
-        </div>
-        <textarea id="encoded_text" readonly></textarea>
-    </div>
+    <input type="file" id="fileInput"></input>
+    <button id="decode_without_key" onclick="runLengthEncode();">ENCODE</button>
 </body>
 
 </html>
