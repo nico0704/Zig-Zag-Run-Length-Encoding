@@ -42,11 +42,11 @@ function runLengthEncode() {
             // var x = 2;
             // var pos = x + y * width;
             // console.log(greyscale_arr[pos]);
-            greyscale_arr = [1, 3, 4, 10, 2, 5, 9, 11, 6, 8, 12, 15, 7, 13, 14, 16]; // 4x4
+            // greyscale_arr = [1, 3, 4, 10, 2, 5, 9, 11, 6, 8, 12, 15, 7, 13, 14, 16]; // 4x4
             // greyscale_arr = [1, 3, 4, 10, 2, 5, 9, 11, 6, 8, 12, 18, 7, 13, 17, 19, 14, 16, 20, 23, 15, 21, 22, 24]; // 4x6
             // greyscale_arr = [1, 3, 4, 10, 11, 18, 2, 5, 9, 12, 17, 19, 6, 8, 13, 16, 20, 23, 7, 14, 15, 21, 22, 24]; // 6x4
-            width = 4;
-            height = 4;
+            //width = 4;
+            //height = 4;
             var result = "";
             var arr_tmp = [];
             var row = 0;
@@ -90,32 +90,24 @@ function runLengthEncode() {
             col = 1;
             i = 0;
             // second half
-            col = height > width ? 0 : 1;
-            var diff = height > width ? Math.abs(height - width) : 1;
             i = 0;
-            while (i < max - 1) {
+            while (i < width - 1) {
                 let colTemp = col;
-                row = height - diff;
-                //row = height - 1;
-                while (row >= 0 && colTemp != width) {
-                    console.log(colTemp +  " + " + row + " * " + width);
+                row = height - 1;
+                while (colTemp <= width - 1) {
+                    //console.log(colTemp +  " + " + row + " * " + width);
                     pos = colTemp + row * width;
-                    //console.log(greyscale_arr[pos]);
                     arr_tmp.push(greyscale_arr[pos]);
                     row--;
                     colTemp++;
                 }
                 console.log(arr_tmp);
                 arr_tmp = [];
-                if (i % 2 == 0) {
+                if (i % 2 == 0 && i != height - 2) {
                     colTemp = width - 1;
-                    let rowTemp = row + 2 + i;
-                    console.log("andersrum");
-                    //console.log("Col: " + colTemp);
-                    //console.log("Row: " +  rowTemp);
-                    //console.log("i: " + i);
+                    let rowTemp = 2 + i;
                     while (rowTemp < height) {
-                        console.log(colTemp +  " + " + row + " * " + width);
+                        //console.log(colTemp +  " + " + rowTemp + " * " + width);
                         pos = colTemp + rowTemp * width;
                         arr_tmp.push(greyscale_arr[pos]);
                         rowTemp++;
@@ -124,18 +116,10 @@ function runLengthEncode() {
                     console.log(arr_tmp);
                     arr_tmp = [];
                     i++;
-                    if (diff != 1) {
-                        diff--;
-                    } else {
-                        col++;
-                    }
-                }
-                if (diff != 1) {
-                    diff--;
-                } else {
                     col++;
                 }
                 i++;
+                col++;
             }
         };
         img.src = reader.result;
