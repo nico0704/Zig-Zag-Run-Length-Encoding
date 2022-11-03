@@ -123,4 +123,4 @@ function runLengthEncode() {
   reader.readAsDataURL(input.files[0]);
 }
 
-function encode(pos) {}
+function encode(prev_element, counter, pos) {}
