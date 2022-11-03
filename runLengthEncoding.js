@@ -38,10 +38,6 @@ function runLengthEncode() {
             console.log(arr_2d_test);
             //
             // (y,x)
-            // var y = 3;
-            // var x = 2;
-            // var pos = x + y * width;
-            // console.log(greyscale_arr[pos]);
             // greyscale_arr = [1, 3, 4, 10, 2, 5, 9, 11, 6, 8, 12, 15, 7, 13, 14, 16]; // 4x4
             // greyscale_arr = [1, 3, 4, 10, 2, 5, 9, 11, 6, 8, 12, 18, 7, 13, 17, 19, 14, 16, 20, 23, 15, 21, 22, 24]; // 4x6
             // greyscale_arr = [1, 3, 4, 10, 11, 18, 2, 5, 9, 12, 17, 19, 6, 8, 13, 16, 20, 23, 7, 14, 15, 21, 22, 24]; // 6x4
@@ -62,12 +58,12 @@ function runLengthEncode() {
                 while (rowTemp >= 0) {
                     pos = col + rowTemp * width;
                     //console.log(greyscale_arr[pos]);
-                    arr_tmp.push(greyscale_arr[pos]);
+                    //arr_tmp.push(greyscale_arr[pos]);
                     rowTemp--;
                     col++;
                 }
-                console.log(arr_tmp);
-                arr_tmp = [];
+                //console.log(arr_tmp);
+                //arr_tmp = [];
                 if (i % 2 == 0) {
                     // andersrum
                     rowTemp = 0;
@@ -78,8 +74,8 @@ function runLengthEncode() {
                         colTemp--;
                         rowTemp++;
                     }
-                    console.log(arr_tmp);
-                    arr_tmp = [];
+                    //console.log(arr_tmp);
+                    //arr_tmp = [];
                     row++;
                     i++;
                 }
@@ -97,24 +93,24 @@ function runLengthEncode() {
                 while (colTemp <= width - 1) {
                     //console.log(colTemp +  " + " + row + " * " + width);
                     pos = colTemp + row * width;
-                    arr_tmp.push(greyscale_arr[pos]);
+                    //arr_tmp.push(greyscale_arr[pos]);
                     row--;
                     colTemp++;
                 }
-                console.log(arr_tmp);
-                arr_tmp = [];
+                //console.log(arr_tmp);
+                //arr_tmp = [];
                 if (i % 2 == 0 && i != height - 2) {
                     colTemp = width - 1;
                     let rowTemp = 2 + i;
                     while (rowTemp < height) {
                         //console.log(colTemp +  " + " + rowTemp + " * " + width);
                         pos = colTemp + rowTemp * width;
-                        arr_tmp.push(greyscale_arr[pos]);
+                        //arr_tmp.push(greyscale_arr[pos]);
                         rowTemp++;
                         colTemp--;
                     }
-                    console.log(arr_tmp);
-                    arr_tmp = [];
+                    //console.log(arr_tmp);
+                    //arr_tmp = [];
                     i++;
                     col++;
                 }
