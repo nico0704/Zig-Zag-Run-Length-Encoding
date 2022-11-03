@@ -67,31 +67,6 @@ function to_two_dim() {
         }
         row++;
         i++;
-        console.log(queue);
-        if (queue.length == 1) {
-            console.log(1 + "-" + queue[0]);
-        } else {
-            let prev_el = queue[0];
-            let c = 1;
-            for (var j = 1; j < queue.length; j++) {
-                if (queue[j] == prev_el) {
-                    c++;
-                    if (j == queue.length - 1) {
-                        console.log(c + "-" + prev_el);
-                        break;
-                    }
-                    continue;
-                }
-                if (j == queue.length - 1) {
-                    console.log(1 + "-" + queue[j]);
-                    break;
-                }
-                console.log(c + "-" + prev_el);
-                prev_el = queue[j];
-                console.log(prev_el);
-            }
-        }
-        queue = [];
     }
     console.log("Print other half");
     // second half
