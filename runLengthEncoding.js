@@ -1,3 +1,11 @@
+// i komplett durchlaufen lassen
+// "ungerade" bilder z.B 11x11, 4x6
+var result = "";
+var greyscale_arr = [];
+var counter = 1;
+var height;
+var width;
+
 function runLengthEncode() {
   const input = document.getElementById("fileInput");
   const reader = new FileReader();
@@ -11,7 +19,6 @@ function runLengthEncode() {
       context.drawImage(img, 0, 0);
       const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
       const data = imageData.data;
-      var greyscale_arr = [];
       console.log("Data-Length: " + data.length);
       for (var i = 0; i < data.length; i += 4) {
         let avg = parseInt((data[i] + data[i + 1] + data[i + 2]) / 3);
@@ -21,8 +28,8 @@ function runLengthEncode() {
 
       // only for testing
       var arr_2d_test = [];
-      var height = canvas.height;
-      var width = canvas.width;
+      height = canvas.height;
+      width = canvas.width;
       for (var i = 0; i < greyscale_arr.length; i += width) {
         let tmp = [];
         for (var j = i; j < i + width; j++) {
@@ -38,7 +45,6 @@ function runLengthEncode() {
       // greyscale_arr = [1, 3, 4, 10, 11, 18, 2, 5, 9, 12, 17, 19, 6, 8, 13, 16, 20, 23, 7, 14, 15, 21, 22, 24]; // 6x4
       //width = 4;
       //height = 4;
-      var result = "";
       var arr_tmp = [];
       var row = 0;
       var col = 0;
@@ -46,7 +52,6 @@ function runLengthEncode() {
       var max = height > width ? height : width;
       var i = 0;
       var prev_element = greyscale_arr[0];
-      var counter = 1;
 
       // first half
       while (i < min) {
@@ -54,7 +59,7 @@ function runLengthEncode() {
         let rowTemp = row;
         while (rowTemp >= 0) {
           pos = col + rowTemp * width;
-          prev_element = encode(prev_element, counter, pos);
+          prev_element = encode(prev_element, pos);
           //console.log(greyscale_arr[pos]);
           //arr_tmp.push(greyscale_arr[pos]);
           rowTemp--;
@@ -68,7 +73,7 @@ function runLengthEncode() {
           let colTemp = col;
           while (colTemp >= 0) {
             pos = colTemp + rowTemp * width;
-            prev_element = encode(prev_element, counter, pos);
+            prev_element = encode(prev_element, pos);
             //arr_tmp.push(greyscale_arr[pos]);
             colTemp--;
             rowTemp++;
@@ -91,7 +96,7 @@ function runLengthEncode() {
         while (colTemp <= width - 1) {
           //console.log(colTemp +  " + " + row + " * " + width);
           pos = colTemp + row * width;
-          prev_element = encode(prev_element, counter, pos);
+          prev_element = encode(prev_element, pos);
           //arr_tmp.push(greyscale_arr[pos]);
           row--;
           colTemp++;
@@ -104,7 +109,7 @@ function runLengthEncode() {
           while (rowTemp < height) {
             //console.log(colTemp +  " + " + rowTemp + " * " + width);
             pos = colTemp + rowTemp * width;
-            prev_element = prev_element = encode(prev_element, counter, pos);
+            prev_element = encode(prev_element, pos);
             //arr_tmp.push(greyscale_arr[pos]);
             rowTemp++;
             colTemp--;
@@ -117,10 +122,37 @@ function runLengthEncode() {
         i++;
         col++;
       }
+      console.log(result);
     };
     img.src = reader.result;
   };
   reader.readAsDataURL(input.files[0]);
 }
 
-function encode(prev_element, counter, pos) {}
+function encode(prev_element, pos) {
+    console.log(pos);
+    if (pos == 0) {
+        // first element
+        return greyscale_arr[pos];
+    }
+    if (pos == greyscale_arr.length - 1) {
+        // last element
+        if (greyscale_arr[pos] == prev_element) {
+            counter++;
+            result += counter + "-" + prev_element + " ";
+        } else {
+            result += counter + "-" + prev_element + " ";
+            result += 1 + "-" + greyscale_arr[pos] + " ";
+        }
+        return greyscale_arr[pos];
+    }
+    // last element
+    if (greyscale_arr[pos] == prev_element) {
+        counter++;        
+        return greyscale_arr[pos];
+    }
+    result += counter + "-" + prev_element + " ";
+    counter = 1;
+    return greyscale_arr[pos];
+
+}
