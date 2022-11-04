@@ -44,8 +44,7 @@ function runLengthEncode() {
             while (x < width && y < height) {
                 prev_element = encode(prev_element, x, y); // encode function will calc the index of current element (x + y * width)
                 if (x >= width - 1 && y >= height - 1) {
-                    // end
-                    break;
+                    break; // end
                 }
                 if (x < width - 1) x++; // go right
                 else y++; // go down
