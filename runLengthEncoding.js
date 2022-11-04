@@ -6,7 +6,6 @@ var height;
 var width;
 
 function runLengthEncode() {
-
     const input = document.getElementById("fileInput");
     const reader = new FileReader();
     reader.onload = function () {
@@ -29,7 +28,7 @@ function runLengthEncode() {
                 let avg = parseInt((data[i] + data[i + 1] + data[i + 2]) / 3);
                 greyscale_arr.push(avg);
             }
-            // document.body.appendChild(canvas);
+            //document.body.appendChild(canvas);
             height = canvas.height;
             width = canvas.width;
 
@@ -64,6 +63,7 @@ function runLengthEncode() {
             }
             console.log(result);
             console.log("Call Counter: " + call_counter);
+            document.getElementById("result").innerHTML = result;
         };
         img.src = reader.result;
     };
@@ -82,10 +82,10 @@ function encode(prev_element, x, y) {
         // last element
         if (cur_element == prev_element) {
             element_counter++;
-            result += element_counter + "*" + prev_element + ", ";
+            result += element_counter + "*" + prev_element;
         } else {
             result += element_counter + "*" + prev_element + ", ";
-            result += 1 + "*" + cur_element + ", ";
+            result += 1 + "*" + cur_element;
         }
         return cur_element;
     }
