@@ -1,11 +1,12 @@
-var result = "";
-var greyscale_arr = [];
-var element_counter = 1;
-var call_counter = 0;
+var result;
+var greyscale_arr;
+var element_counter;
+var call_counter;
 var height;
 var width;
 
 function runLengthEncode() {
+    init();
     const input = document.getElementById("fileInput");
     const reader = new FileReader();
     reader.onload = function () {
@@ -98,6 +99,15 @@ function encode(prev_element, x, y) {
     result += element_counter + "*" + prev_element + ", ";
     element_counter = 1;
     return cur_element;
+}
+
+function init() {
+    result = "";
+    greyscale_arr = [];
+    element_counter = 1;
+    call_counter = 0;
+    height = 0;
+    width = 0;
 }
 
 function make2dimArray(width, greyscale_arr) {
