@@ -37,24 +37,26 @@ function runLengthEncode() {
             console.log(arr_2d_test);
             //
 
+            // loop through the greyscale and run-length-encode
             var y = 0;
             var x = 0;
             var prev_element = greyscale_arr[0];
             while (x < width && y < height) {
-                prev_element = encode(prev_element, x, y);
+                prev_element = encode(prev_element, x, y); // encode function will calc the index of current element (x + y * width)
                 if (x >= width - 1 && y >= height - 1) {
+                    // end
                     break;
                 }
-                if (x < width - 1) x++;
-                else y++;
+                if (x < width - 1) x++; // go right
+                else y++; // go down
                 while (x > 0 && y < height - 1) {
                     prev_element = encode(prev_element, x, y);
                     x--;
                     y++;
                 }
                 prev_element = encode(prev_element, x, y);
-                if (y < height - 1) y++;
-                else x++;
+                if (y < height - 1) y++; // go down
+                else x++; // go right
                 while (y > 0 && x < width - 1) {
                     prev_element = encode(prev_element, x, y);
                     y--;
