@@ -84,10 +84,10 @@ function encode(prev_element, x, y) {
         // last element
         if (cur_element == prev_element) {
             element_counter++;
-            result += element_counter + "*" + prev_element;
+            result += element_counter + "-" + prev_element;
         } else {
-            result += element_counter + "*" + prev_element + ", ";
-            result += 1 + "*" + cur_element;
+            result += element_counter + "-" + prev_element + ";";
+            result += 1 + "-" + cur_element;
         }
         return cur_element;
     }
@@ -96,7 +96,7 @@ function encode(prev_element, x, y) {
         element_counter++;
         return cur_element;
     }
-    result += element_counter + "*" + prev_element + ", ";
+    result += element_counter + "-" + prev_element + ";";
     element_counter = 1;
     return cur_element;
 }
