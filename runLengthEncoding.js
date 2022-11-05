@@ -38,7 +38,7 @@ function runLengthEncode() {
             console.log(arr_2d_test);
             //
 
-            // loop through the greyscale and run-length-encode
+            // loop through the greyscale array and run-length-encode
             var y = 0;
             var x = 0;
             var prev_element = greyscale_arr[0];
