@@ -110,6 +110,7 @@ function init() {
     width = 0;
 }
 
+// only for testing
 function make2dimArray(width, greyscale_arr) {
     var resultArray = [];
     for (var i = 0; i < greyscale_arr.length; i += width) {
