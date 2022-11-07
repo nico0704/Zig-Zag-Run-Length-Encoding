@@ -29,7 +29,6 @@ function runLengthEncode() {
                 let avg = parseInt((data[i] + data[i + 1] + data[i + 2]) / 3);
                 greyscale_arr.push(avg);
             }
-            //document.body.appendChild(canvas);
             height = canvas.height;
             width = canvas.width;
 
@@ -78,6 +77,7 @@ function encode(prev_element, x, y) {
     call_counter++;
     if (pos == 0) {
         // first element
+        element_counter++;
         return cur_element;
     }
     if (pos == greyscale_arr.length - 1) {
@@ -104,7 +104,7 @@ function encode(prev_element, x, y) {
 function init() {
     result = "";
     greyscale_arr = [];
-    element_counter = 1;
+    element_counter = 0;
     call_counter = 0;
     height = 0;
     width = 0;
