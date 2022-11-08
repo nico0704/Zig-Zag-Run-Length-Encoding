@@ -25,6 +25,7 @@ function runLengthEncode() {
             );
             const data = imageData.data;
             console.log("Data-Length: " + data.length);
+            console.log(data);
             for (var i = 0; i < data.length; i += 4) {
                 let avg = parseInt((data[i] + data[i + 1] + data[i + 2]) / 3);
                 greyscale_arr.push(avg);
