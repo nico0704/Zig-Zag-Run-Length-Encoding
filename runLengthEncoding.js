@@ -48,7 +48,8 @@ function runLengthEncode() {
             // init prev_element with pixel in top left corner
             var prev_element = greyscale_arr[0];
             while (x < width && y < height) {
-                prev_element = encode(prev_element, x, y); // encode function will calc the index of current element (x + y * width)
+                // encode function needs (x,y) to calc the index of current element in the 1 dim greyscale array (x + y * width) 
+                prev_element = encode(prev_element, x, y); 
                 if (x >= width - 1 && y >= height - 1) {
                     break; // end
                 }
